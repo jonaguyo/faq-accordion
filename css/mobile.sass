@@ -1,0 +1,129 @@
+$very-dark-saturated-blue: hsl(238, 29%, 16%)
+$soft-red: hsl(14, 88%, 65%)
+$soft-violet: hsl(273, 75%, 66%)
+$soft-blue: hsl(240, 73%, 65%)
+$very-dark-grayish-blue: hsl(237, 12%, 33%)
+$dark-grayish-blue: hsl(240, 6%, 50%)
+$light-grayish-blue: hsl(240, 5%, 91%)
+    
+$grad-color-top: $soft-violet
+$grad-color-bottom: $soft-blue
+$text-color-primary: $very-dark-saturated-blue
+$text-color-secondary: hsl(240, 6%, 50%)
+$text-color-hover: $soft-red
+$divider-color: $light-grayish-blue
+
+@keyframes arrow-rotation
+    0%
+        transform: rotateZ(0deg)
+    100%
+        transform: rotateZ(180deg)
+        
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    color: $text-color-primary
+
+body
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    position: absolute
+    width: 100%
+    height: 100%
+
+    font-family: 'Kumbh Sans'
+    font-size: 12px
+
+    background: linear-gradient($grad-color-top, $grad-color-bottom) fixed
+
+    .content
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-items: center
+
+        position: relative
+        min-width: 375px
+        margin: 150px
+
+        border-radius: 20px
+        box-shadow: 0px 50px 50px -10px rgba(hsl(238, 29%, 16%), 0.7)
+
+        background: white url('../images/bg-pattern-mobile.svg') no-repeat
+        background-position-x: 50%
+
+        .img-woman
+            position: relative
+            margin-bottom: -100px
+            transform: translate(-15px, -100px)
+
+        .img-box
+            display: none
+
+        .questions
+            display: flex
+            flex-direction: column
+
+            position: relative
+            padding: 30px
+
+        header
+            margin-top: 30px
+            margin-bottom: 30px
+            font-size: 30px
+            font-weight: 700
+            align-self: center
+
+        .question-container
+            position: relative
+            border-top: 1px solid $divider-color
+            padding: 20px 20px 20px 0px
+            font-size: 15px
+
+            .question
+                font-weight: 200
+
+            .arrow
+                position: absolute
+                right: 10px
+
+            .answer
+                display: none
+                margin-top: 10px
+                font-size: 12px
+                color: $text-color-secondary
+
+            input
+                display: none
+
+            input:checked ~ .question
+                font-weight: 700
+
+            input:checked ~ .question > .arrow
+                animation-name: arrow-rotation
+                animation-fill-mode: forwards
+                animation-duration: 0.5s
+                //transform: rotateX(180deg)
+
+            input:checked ~ .answer
+                display: block
+
+            .question:hover
+                color: $text-color-hover
+                cursor: pointer
+
+        .question-container:first-of-type
+            border-top: none
+
+    .attribution
+        position: relative
+        padding-bottom: 10px
+        font-size: 12px
+        text-align: center
+
+        a
+            color: $soft-red
